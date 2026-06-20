@@ -23,7 +23,8 @@ function MainHeader({ user }: MainHeaderProps) {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
+      elevation={3}
       sx={{
         backgroundColor: "primary.main",
         borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
@@ -77,7 +78,7 @@ function MainHeader({ user }: MainHeaderProps) {
                 pb: 0.5,
               }}
             >
-              Catálogo
+              Acervo
             </Box>
 
             <Box
