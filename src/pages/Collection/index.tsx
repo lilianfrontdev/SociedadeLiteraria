@@ -8,7 +8,7 @@ import BookCard from "./components/Book";
 const MOCK_BOOKS: Book[] = [
   { id: 1, title: "Crime e Castigo", author: "Fiódor Dostoievski", category: "Romance", available: true, coverBgColor: "#754437" },
   { id: 2, title: "Metamorfose", author: "Franz Kafka", category: "Clássico", available: true, coverBgColor: "#28374A" },
-  { id: 3, title: "Sobre a Bravidade da Vida", author: "Senêca", category: "Clássico", available: true, coverBgColor: "#6B6751" },  
+  { id: 3, title: "Sobre a Brevidade da Vida", author: "Senêca", category: "Clássico", available: true, coverBgColor: "#6B6751" },  
 ];
 const CATEGORIES = ["Todos", "Disponíveis", "Romance", "Naturalismo", "Clássicos", "Biografia"];
 
