@@ -1,0 +1,43 @@
+import { apiRequest, ApiError } from "./api";
+import type { Book } from "../pages/Collection/components/Book";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+export interface LivroResponse {
+  id: number;
+  categoria: string;
+  titulo: string;
+  quantidadeTotal: number;
+  quantidadeDisponivel: number;
+  publicacao: string;
+}
+
+export async function getLivros(): Promise<LivroResponse[]> {
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE_URL}/Livros`);
+  } catch {
+    throw new ApiError("Não foi possível conectar ao servidor. Verifique se a API está rodando.");
+  }
+
+  if (!response.ok) {
+    throw new ApiError("Não foi possível carregar o acervo");
+  }
+
+  return response.json();
+}
+
+export function getLivro(id: number) {
+  return apiRequest<LivroResponse>(`/Livros/${id}`);
+}
+
+
+export function mapLivroToBook(livro: LivroResponse): Book {
+  return {
+    id: livro.id,
+    title: livro.titulo,
+    author: "Autor não informado",
+    category: livro.categoria,
+    available: livro.quantidadeDisponivel > 0,
+  };
+}
