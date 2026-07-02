@@ -22,7 +22,7 @@ export interface UsuarioResponse {
 }
 
 export function login(payload: LoginPayload) {
-  return apiRequest<null>("/api/Auth/login", {
+  return apiRequest<null>("/Auth/login", {
     method: "POST",
     body: JSON.stringify({
       Email: payload.email,

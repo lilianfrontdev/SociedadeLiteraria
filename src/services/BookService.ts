@@ -3,6 +3,26 @@ import type { Book } from "../pages/Collection/components/Book";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+export interface LivroPayload {
+  categoria: string;
+  titulo: string;
+  quantidadeTotal: number;
+  publicacao: string; 
+}
+
+export function createLivro(payload: LivroPayload) {
+  return apiRequest<LivroResponse>("/api/Livros", {
+    method: "POST",
+    body: JSON.stringify({
+      Categoria: payload.categoria,
+      Titulo: payload.titulo,
+      QuantidadeTotal: payload.quantidadeTotal,
+      QuantidadeDisponivel: payload.quantidadeTotal,
+      Publicacao: payload.publicacao,
+    }),
+  });
+}
+
 export interface LivroResponse {
   id: number;
   categoria: string;
@@ -17,7 +37,9 @@ export async function getLivros(): Promise<LivroResponse[]> {
   try {
     response = await fetch(`${API_BASE_URL}/api/Livros`);
   } catch {
-    throw new ApiError("Não foi possível conectar ao servidor. Verifique se a API está rodando.");
+    throw new ApiError(
+      "Não foi possível conectar ao servidor. Verifique se a API está rodando.",
+    );
   }
 
   if (!response.ok) {
@@ -30,7 +52,6 @@ export async function getLivros(): Promise<LivroResponse[]> {
 export function getLivro(id: number) {
   return apiRequest<LivroResponse>(`/api/Livros/${id}`);
 }
-
 
 export function mapLivroToBook(livro: LivroResponse): Book {
   return {

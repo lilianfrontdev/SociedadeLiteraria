@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import MainHeader from "./components/MainHeader.tsx";
 import Collection from "./pages/Collection/index.tsx";
 import Login from "./pages/Login/index.tsx";
+import BookRegister from "./pages/BookAdmin/index.tsx";
 
 function Main() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<Collection />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin/livros/novo" element={<BookRegister/>} />
       </Routes>
     </>
   );

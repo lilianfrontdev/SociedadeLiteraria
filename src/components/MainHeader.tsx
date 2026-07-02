@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 interface UserProfile {
   name: string;
-  avatarUrl?: string; 
+  avatarUrl?: string;
+  role?: string; 
 }
 
 interface MainHeaderProps {
@@ -13,6 +14,8 @@ interface MainHeaderProps {
 }
 
 function MainHeader({ user }: MainHeaderProps) {
+  const isAdmin = user?.role === "Administrador";
+
   const getInitials = (name: string) => {
     const names = name.split(" ");
     if (names.length > 1) {
@@ -94,6 +97,22 @@ function MainHeader({ user }: MainHeaderProps) {
             >
               Meus empréstimos
             </Box>
+
+            {isAdmin && (
+              <Box
+                component={Link}
+                to="/admin/livros"
+                sx={{
+                  color: "rgba(251, 248, 240, 0.7)",
+                  textDecoration: "none",
+                  pb: 0.5,
+                  transition: "color 0.2s",
+                  "&:hover": { color: "background.default" },
+                }}
+              >
+                Gerenciar acervo
+              </Box>
+            )}
           </Box>
 
           <Avatar
