@@ -5,7 +5,7 @@ import Filters from "./components/Filters";
 import type { Book } from "./components/Book";
 import BookCard from "./components/Book";
 import { ApiError } from "../../services/api";
-import { getLivros, mapLivroToBook } from "../../services/LivroService";
+import { getLivros, mapLivroToBook } from "../../services/BookService";
 
 const CATEGORIES = ["Todos", "Disponíveis", "Romance", "Naturalismo", "Clássicos", "Biografia"];
 

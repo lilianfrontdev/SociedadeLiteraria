@@ -21,6 +21,7 @@ export async function apiRequest<T>(
 ): Promise<ApiResponse<T>> {
   let response: Response;
   try {
+    console.log(`${API_BASE_URL}${endpoint}`)
     response = await fetch(`${API_BASE_URL}${endpoint}`, {
       ...options,
       headers: {

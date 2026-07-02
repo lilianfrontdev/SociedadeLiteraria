@@ -15,7 +15,7 @@ export interface LivroResponse {
 export async function getLivros(): Promise<LivroResponse[]> {
   let response: Response;
   try {
-    response = await fetch(`${API_BASE_URL}/Livros`);
+    response = await fetch(`${API_BASE_URL}/api/Livros`);
   } catch {
     throw new ApiError("Não foi possível conectar ao servidor. Verifique se a API está rodando.");
   }
@@ -28,7 +28,7 @@ export async function getLivros(): Promise<LivroResponse[]> {
 }
 
 export function getLivro(id: number) {
-  return apiRequest<LivroResponse>(`/Livros/${id}`);
+  return apiRequest<LivroResponse>(`/api/Livros/${id}`);
 }
 
 
